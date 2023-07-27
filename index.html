@@ -7,8 +7,66 @@
     5. Health Bar
     6. Game Over
  -->
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
 <body>
+    <!-- Canvas Container-->
+    <div style = "
+        position: relative;
+        display: inline-block;
+        "  
+    >
+
+        <!-- Health Bar & Timer Container -->
+        <div style = "
+            position: absolute;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: 20px;
+            "
+        >
+            <!-- Player Health -->
+            <div style = "
+                background-color: yellow; 
+                height: 30px; 
+                width: 100%;
+                "
+            >
+
+            </div>
+
+            <!-- Timer -->
+            <div style = "
+                background-color: red; 
+                height: 100px; 
+                width: 100px;
+                flex-shrink: 0;
+                "
+            >
+                
+            </div>
+
+            <!-- Enemy Health -->
+            <div style = "
+                background-color: yellow; 
+                height: 30px; 
+                width: 100%;
+                "
+            >                
+            </div>
+        </div>
+
     <canvas></canvas>
+
+    </div>
 </body>
 
 <script src="index.js"></script>
