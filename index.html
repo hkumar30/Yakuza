@@ -4,7 +4,7 @@
     2. Create Player/Enemy (May 9th)
     3. Move Characters (Event Listener) (May 24th)
     4. Attacks (July 25th)
-    5. Health Bar
+    5. Health Bar (July 27th)
     6. Game Over
  -->
 
@@ -18,87 +18,93 @@
 
 <body>
     <!-- Canvas Container-->
-    <div style = "
+    <div style="
         position: relative;
         display: inline-block;
-        "  
-    >
+        ">
 
         <!-- Health Bar & Timer Container -->
-        <div style = "
+        <div style="
             position: absolute;
             display: flex;
             width: 100%;
             align-items: center;
             padding: 20px;
-            "
-        >
+            ">
             <!-- Player Health -->
-            <div style = "
+            <div style="
                 position: relative;
                 height: 30px;
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
-            "
-            >
-                <div style = "
+            ">
+                <div style="
                     background-color: yellow; 
                     height: 30px; 
                     width: 100%
-                    "
-                ></div>
+                    "></div>
 
-                <div id = "playerHealth" 
-                    style = "
+                <div id="playerHealth" style="
                     position: absolute;
                     background: green;
                     top: 0;
                     bottom: 0;
                     right: 0;
                     width: 100%
-                "
-                ></div>
+                "></div>
             </div>
 
             <!-- Timer -->
-            <div style = "
-                background-color: red; 
+            <div id="timer" style="
+                background-color: red;
+                color: white; 
                 height: 100px; 
                 width: 100px;
                 flex-shrink: 0;
-                "
-            >
-                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                ">
+                10
             </div>
 
             <!-- Enemy Health -->
-            <div style = "
+            <div style="
                 position: relative;
                 height: 30px;
                 width: 100%;
-            "
-            >
-                <div style = "
+            ">
+                <div style="
                     background-color: yellow; 
                     height: 30px; 
-                    "
-                ></div>
+                    "></div>
 
-                <div id = "enemyHealth" 
-                    style = "
+                <div id="enemyHealth" style="
                     position: absolute;
                     background: green;
                     top: 0;
                     bottom: 0;
                     left: 0;
                     right: 0;
-                "
-                ></div>
+                "></div>
             </div>
         </div>
 
-    <canvas></canvas>
+        <div id="resultText" style="
+            position: absolute;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        ">
+            Tie
+        </div>
+        <canvas></canvas>
 
     </div>
 </body>
