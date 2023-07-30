@@ -48,6 +48,39 @@ const player = new Fighter({
   offset: {
     x: 0,
     y: 0
+  },
+  imageSrc: './assets/hero1/Idle.png',
+  framesMax: 8,
+  scale: 2.5,
+  offset:  {
+    x: 215,
+    y: 157
+  },
+  sprites: {
+    idle: {
+      imageSrc: './assets/hero1/Idle.png',
+      framesMax: 8
+    },
+
+    run: {
+      imageSrc: './assets/hero1/Run.png',
+      framesMax: 8
+    },
+
+    jump: {
+      imageSrc: './assets/hero1/Jump.png',
+      framesMax: 2
+    },
+
+    fall: {
+      imageSrc: './assets/hero1/Fall.png',
+      framesMax: 2
+    },
+
+    attack1: {
+      imageSrc: './assets/hero1/Attack1.png',
+      framesMax: 6
+    }
   }
 });
 
@@ -132,21 +165,34 @@ const keys = {
     background.update();
     shop.update();
     player.update();
-    enemy.update();
+    // enemy.update();
   
     //Player
+    
     player.velocity.x = 0;
   
     if (keys.a.pressed && player.lastKey === 'a') {
       player.velocity.x = PLAYER_SPEED_FORWARD;
+      player.switchSprite('run');
     }
   
     else if (keys.d.pressed && player.lastKey === 'd') {
       player.velocity.x = PLAYER_SPEED_BACKWARD;
+      player.switchSprite('run');
+    }
+
+    else{
+      player.switchSprite('idle');
     }
   
-    else if (keys.w.pressed && player.lastKey === 'w') {
+    if (keys.w.pressed && player.lastKey === 'w') {
       player.velocity.y = PLAYER_SPEED_UP;
+    }
+
+    if(player.velocity.y < 0){
+      player.switchSprite('jump');
+    } else if(player.velocity.y > 0){
+      player.switchSprite('fall');
     }
   
     //Enemy
