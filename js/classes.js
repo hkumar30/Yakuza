@@ -94,7 +94,7 @@ class Fighter extends Sprite {
         }
 
         this.color = color
-        this.isAttacking;
+        this.isAttacking = false;
         this.health = 100;
 
         this.framesCurrent = 0;
@@ -121,6 +121,8 @@ class Fighter extends Sprite {
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
 
+        c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
@@ -138,29 +140,25 @@ class Fighter extends Sprite {
     attack() {
         this.switchSprite('attack1');
         this.isAttacking = true;
-        setTimeout(() => {
-            this.isAttacking = false;
-        }, 1000)
     }
 
     takeHit() {
-        this.switchSprite('takeHit');
         this.health -= 20;
 
-        if(this.health <= 0){
-            this.switchSprite('death')
+        if(this.health > 0){
+            this.switchSprite('takeHit')
         }
     
         else{
-            this.switchSprite('takeHit')
+            this.switchSprite('death')
         }
     }
 
     switchSprite(sprite) {
         //overrides when either player dies
-        if(this.image === this.sprites.death.image && this.framesCurrent === this.sprites.death.framesMax - 1) {
-            this.dead = true;
-            
+        if(this.image === this.sprites.death.image) {
+            if(this.framesCurrent === this.sprites.death.framesMax - 1)
+                this.dead = true;
             return; 
         }
 
