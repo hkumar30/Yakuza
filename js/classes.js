@@ -124,6 +124,8 @@ class Fighter extends Sprite {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
+        console.log(this.position.y)
+
         //Prevents players and enemy from falling off the screen
         if (this.position.y + this.height + this.velocity.y >= canvas.height - PLATFORM_ELEVATION) {
             this.velocity.y = 0;

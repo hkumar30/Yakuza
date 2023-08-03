@@ -37,7 +37,7 @@ const shop = new Sprite({
 
 const player = new Fighter({
   position: {
-    x: 0,
+    x: 100,
     y: 0
   },
   velocity: {
@@ -103,7 +103,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
   position: {
-    x: 400,
+    x: 800,
     y: 100
   },
   velocity: {
@@ -200,7 +200,9 @@ const keys = {
   }
 }
 
-decreaseTimer()
+const game = {
+  started: false
+}
 
   function animate() {
     window.requestAnimationFrame(animate);
@@ -210,6 +212,8 @@ decreaseTimer()
     shop.update();
     c.fillStyle = 'rgba(255, 255, 255, 0.1)';
     c.fillRect(0, 0, canvas.width, canvas.height);
+
+    if(!game.started) {return; }
     player.update();
     enemy.update();
   
@@ -311,6 +315,12 @@ decreaseTimer()
   }
 
 animate()
+
+document.querySelector('#startButton').addEventListener('click', () => {
+  decreaseTimer()
+  document.querySelector('#tutorial').style.display = 'none'
+  game.started = true
+})
 
 window.addEventListener('keydown', (event) => {
   if(timer > 0){
